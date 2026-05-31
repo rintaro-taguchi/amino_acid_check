@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const CORRECT_SEQUENCE = 'MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYFP';
+  const CORRECT_SEQUENCES = {
+    alpha: 'MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR',
+    beta: 'MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH'
+  };
   const VALID_AMINO_ACIDS = 'ARNDCQEGHILKMFPSTWYV';
 
+  const chainSelect = document.getElementById('chainSelect');
   const sequenceInput = document.getElementById('sequenceInput');
   const checkButton = document.getElementById('checkButton');
   const resultArea = document.getElementById('resultArea');
@@ -21,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function checkSequence() {
     const normalizedSequence = normalizeSequence(sequenceInput.value);
+    const selectedChain = chainSelect.value;
+    const correctSequence = CORRECT_SEQUENCES[selectedChain];
+    const chainName = selectedChain === 'alpha' ? 'α鎖' : 'β鎖';
 
     if (normalizedSequence.length === 0) {
       setResult('アミノ酸配列を入力してください。', 'warning');
@@ -34,13 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (normalizedSequence === CORRECT_SEQUENCE) {
+    if (normalizedSequence === correctSequence) {
       setResult('正解です。入力されたアミノ酸配列は正解配列と一致しています。', 'success');
       return;
     }
 
     setResult(
-      `不正解です。入力されたアミノ酸配列は正解配列と一致していません。\n入力配列の長さ: ${normalizedSequence.length}\n正解配列の長さ: ${CORRECT_SEQUENCE.length}`,
+      `不正解です。入力されたアミノ酸配列は${chainName}の正解配列と一致していません。\n入力配列の長さ: ${normalizedSequence.length}\n正解配列の長さ: ${correctSequence.length}`,
       'error'
     );
   }

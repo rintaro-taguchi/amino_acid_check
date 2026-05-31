@@ -10,7 +10,13 @@
   <main class="container">
     <section class="card">
       <h1>アミノ酸配列チェック</h1>
-      <p class="description">アミノ酸配列を入力して、「判定する」ボタンを押してください。小文字や空白、改行を含んでいても判定できます。</p>
+      <p class="description">アミノ酸配列を入力して、α鎖またはβ鎖を選んでから「判定する」ボタンを押してください。小文字や空白、改行を含んでいても判定できます。</p>
+
+      <label class="field-label" for="chainSelect">判定対象</label>
+      <select id="chainSelect" class="chain-select">
+        <option value="alpha">α鎖</option>
+        <option value="beta">β鎖</option>
+      </select>
 
       <label class="field-label" for="sequenceInput">アミノ酸配列</label>
       <textarea id="sequenceInput" class="sequence-input" rows="6" placeholder="例: mktayia kqrqisfvkshfsrqdildlwiyhtqgyfp"></textarea>
