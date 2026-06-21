@@ -4,11 +4,11 @@ GitHub Pages で公開できる、最小構成のアミノ酸配列一致判定�
 
 ## 特徴
 
-- HTML / CSS / JavaScript だけで動作します
-- サーバーやデータベースは不要です
-- α鎖 / β鎖 を UI で選んで判定できます
-- 小文字、空白、改行、タブを含む入力に対応しています
-- 判定結果に応じて色分け表示されます
+* HTML / CSS / JavaScript だけで動作します
+* サーバーやデータベースは不要です
+* 正常なα鎖 / 正常なβ鎖 / 鎌状赤血球のβ鎖 を UI で選んで判定できます
+* 小文字、空白、改行、タブを含む入力に対応しています
+* 判定結果に応じて色分け表示されます
 
 ## ファイル構成
 
@@ -22,23 +22,28 @@ amino_acid_check/
 ## 使い方
 
 1. `index.html` をブラウザで開きます。
-2. 判定対象で α鎖 または β鎖 を選びます。
+2. 判定対象で 正常なα鎖 / 正常なβ鎖 / 鎌状赤血球のβ鎖 のいずれかを選びます。
 3. アミノ酸配列を入力します。
 4. 「判定する」を押すと結果が表示されます。
 
 ## 判定ルール
 
-- 入力を大文字に変換します
-- 空白、改行、タブを削除します
-- 有効な 1 文字表記のアミノ酸だけかを確認します
-- 選択した鎖の正解配列と完全一致するかを判定します
+* 入力を大文字に変換します
+* 空白、改行、タブを削除します
+* 有効な 1 文字表記のアミノ酸だけかを確認します
+* 選択した鎖の正解配列と完全一致するかを判定します
 
 ### 正解配列
 
-- α鎖
-	- `MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR`
-- β鎖
-	- `MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH`
+* 正常なα鎖
+
+  * `MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR`
+* 正常なβ鎖
+
+  * `MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH`
+* 鎌状赤血球のβ鎖
+
+  * `MVHLTPVEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFFESFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPENFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH`
 
 ## ローカルでの確認
 
@@ -59,5 +64,6 @@ python3 -m http.server 8000
 
 ## 補足
 
-- 入力内容は保存しません
-- 外部ライブラリは使っていません
+* 入力内容は保存しません
+* 外部ライブラリは使っていません
+* 判定は完全一致で行うため、1文字でも異なる場合は不正解になります
